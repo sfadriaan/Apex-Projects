@@ -1,0 +1,13 @@
+public with sharing class RandomNumberGenerator {
+    
+    public static final Integer MULTIPLIER = 1000000;
+    
+    public static Integer generateRandomNumber(Integer lowerValue, Integer upperValue){
+        
+        Double randomDouble = Math.random();
+        Integer randomNumberMultiplied = (Integer)(MULTIPLIER * randomDouble);
+        Integer randomNumber = math.mod(randomNumberMultiplied,upperValue-lowerValue+1)+lowerValue; 
+        
+        return randomNumber;
+    }
+}

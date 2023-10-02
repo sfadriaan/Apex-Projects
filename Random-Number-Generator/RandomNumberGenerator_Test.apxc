@@ -1,0 +1,82 @@
+@IsTest
+public class RandomNumberGenerator_Test{
+    @IsTest
+    public static void unitValidOutput(){
+        List<IA_RandomNumberGenerator.Requests> requests = new List<IA_RandomNumberGenerator.Requests>();        
+        IA_RandomNumberGenerator.Requests request = new IA_RandomNumberGenerator.Requests();
+        request.lowerValue = 3;
+        request.upperValue = 8;
+        
+        requests.add(request);
+        
+        Assert.areEqual(1,IA_RandomNumberGenerator.randomNumbers(requests).size(),'Request and Result list size should be the same');
+    }
+    
+    @IsTest
+    public static void bulkValidOutput(){
+        List<IA_RandomNumberGenerator.Requests> requests = new List<IA_RandomNumberGenerator.Requests>();  
+        for (Integer i=0;i<10;i++){
+            IA_RandomNumberGenerator.Requests request = new IA_RandomNumberGenerator.Requests();
+            request.lowerValue = 3;
+            request.upperValue = 8;
+            
+            requests.add(request);
+        }
+        Assert.areEqual(10,IA_RandomNumberGenerator.randomNumbers(requests).size(),'Request and Result list size should be the same');
+    }
+    
+	@IsTest
+    public static void bulkValidOutputWithInvalidInputs(){
+        List<IA_RandomNumberGenerator.Requests> requests = new List<IA_RandomNumberGenerator.Requests>();  
+        for (Integer i=0;i<10;i++){
+            IA_RandomNumberGenerator.Requests request = new IA_RandomNumberGenerator.Requests();
+            request.lowerValue = i;
+            request.upperValue = 7;
+            
+            requests.add(request);
+        }
+        Assert.areEqual(10,IA_RandomNumberGenerator.randomNumbers(requests).size(),'Request and Result list size should be the same');
+    }    
+    
+    @IsTest
+    public static void unitNegativeLowerValue(){
+        List<IA_RandomNumberGenerator.Requests> requests = new List<IA_RandomNumberGenerator.Requests>();        
+        IA_RandomNumberGenerator.Requests request = new IA_RandomNumberGenerator.Requests();
+        request.lowerValue = -3;
+        request.upperValue = 8;
+        
+        requests.add(request);
+        
+        List<IA_RandomNumberGenerator.Results> randomNumber = IA_RandomNumberGenerator.randomNumbers(requests);
+        
+        Assert.areEqual(true,randomNumber[0].errorFlag,'Negative lower value should return a True errorFlag');
+    }
+    
+    @IsTest
+    public static void unitNegativeUpperValue(){
+        List<IA_RandomNumberGenerator.Requests> requests = new List<IA_RandomNumberGenerator.Requests>();        
+        IA_RandomNumberGenerator.Requests request = new IA_RandomNumberGenerator.Requests();
+        request.lowerValue = 3;
+        request.upperValue = -8;
+        
+        requests.add(request);
+        
+        List<IA_RandomNumberGenerator.Results> randomNumber = IA_RandomNumberGenerator.randomNumbers(requests);
+        
+        Assert.areEqual(true,randomNumber[0].errorFlag,'Negative upper value should return a True errorFlag');
+    }
+    
+    @IsTest
+    public static void unitLowerAndUpperValuesSwitchedAround(){
+        List<IA_RandomNumberGenerator.Requests> requests = new List<IA_RandomNumberGenerator.Requests>();        
+        IA_RandomNumberGenerator.Requests request = new IA_RandomNumberGenerator.Requests();
+        request.lowerValue = 3;
+        request.upperValue = 1;
+        
+        requests.add(request);
+        
+        List<IA_RandomNumberGenerator.Results> randomNumber = IA_RandomNumberGenerator.randomNumbers(requests);
+        
+        Assert.areEqual(true,randomNumber[0].errorFlag,'An upper value that is smaller than the lower value should return a True errorFlag');
+    }
+}

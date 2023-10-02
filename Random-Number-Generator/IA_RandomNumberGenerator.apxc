@@ -1,0 +1,48 @@
+public with sharing class IA_RandomNumberGenerator {
+    private static Boolean validateInput(Integer lowerValue, Integer upperValue){
+        Boolean errorFlag;
+        if(lowerValue > upperValue){
+            errorFlag = true;
+        }
+        else if(lowerValue < 0 || upperValue < 0){
+            errorFlag = true;
+        }
+        else{
+            errorFlag = false;
+        }
+        return errorFlag;
+    }
+    @InvocableMethod(Label ='Generates a random number' Description='Generates a random number' Category='Event')
+    public static List<Results> randomNumbers(List<Requests> requests){
+        
+        List<Results> results = new List<Results>();
+        Boolean invalidInput;
+        for (Requests request:requests){      
+            invalidInput = validateInput(request.lowerValue, request.upperValue);
+            Results result = new Results();
+            if (invalidInput == false){
+                Integer randomNumberValue = RandomNumberGenerator.generateRandomNumber(request.lowerValue,request.upperValue);
+                result.randomNumber=randomNumberValue;
+                result.errorFlag=invalidInput;
+            }
+            else{
+                result.randomNumber=null;
+                result.errorFlag=invalidInput;
+            }
+            results.add(result);
+        }
+        return results;
+    }
+    public with sharing class Requests{
+        @InvocableVariable(Label='Lower Value' Description='Lower Value' Required=true)
+        public Integer lowerValue;
+        @InvocableVariable(Label='Upper Value' Description='Upper Value' Required=true)
+        public Integer upperValue;
+    }
+    public with sharing class Results{
+        @InvocableVariable(Label = 'Random Number Output' Description = 'Random Number Output')
+        public Integer randomNumber;
+        @InvocableVariable(Label = 'Error Occurred' Description='Error Occurred')
+        public Boolean errorFlag;
+    }
+}
