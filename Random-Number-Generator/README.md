@@ -1,4 +1,3 @@
-# Random Number Generator
 # Choose a Winner at Random: The Salesforce Way
 
 Lucky draws are always exciting! You can find them everywhere! At a school fundraiser, a carnival, the national lottery or when you buy two bars of chocolate and can win a Toyota Auris.
