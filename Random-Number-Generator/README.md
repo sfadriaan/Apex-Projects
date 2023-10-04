@@ -41,7 +41,7 @@ The results look like this:
 
 Now at first sight it looks promising as all entries are chosen at random around the 4000 mark. The standard deviation is approximately 83. From the graph, there is no significant evidence that the random selection is biased towards any lower or upper values.
 
-![](https://github.com/sfadriaan/Apex-Projects/blob/main/Random-Number-Generator/but-nicola-foti.gif)
+<img src="https://github.com/sfadriaan/Apex-Projects/blob/main/Random-Number-Generator/but-nicola-foti.gif" width="60%">
 
 But, I did not like the fact that the decimals are so fine and that at random, for a multiplier of 10, the values:
 
