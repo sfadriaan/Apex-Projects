@@ -37,11 +37,11 @@ Let’s run a Monte Carlo simulation by assuming that we have 20 entrants and we
 
 The results look like this:
 
-![](https://github.com/sfadriaan/Apex-Projects/blob/main/Random-Number-Generator/Number%20Of%20Times%20Participant%20Was%20Randomly%20Selected.svg)
+![](https://github.com/sfadriaan/Apex-Projects/blob/main/Random-Number-Generator/images/Number%20Of%20Times%20Participant%20Was%20Randomly%20Selected.svg)
 
 Now at first sight it looks promising as all entries are chosen at random around the 4000 mark. The standard deviation is approximately 83. From the graph, there is no significant evidence that the random selection is biased towards any lower or upper values.
 
-<img src="https://github.com/sfadriaan/Apex-Projects/blob/main/Random-Number-Generator/but-nicola-foti.gif" width="40%">
+<img src="https://github.com/sfadriaan/Apex-Projects/blob/main/Random-Number-Generator/images/but-nicola-foti.gif" width="40%">
 
 But, I did not like the fact that the decimals are so fine and that at random, for a multiplier of 10, the values:
 
@@ -81,7 +81,7 @@ Let us follow the same route with the previous solution and do a Monte Carlo sim
 
 The graph shows the absolute difference between the average and the amount randomly selected for each entrant from both tests: 
 
-![](https://github.com/sfadriaan/Apex-Projects/blob/main/Random-Number-Generator/Deviation%20From%20Average%20Per%20Entrant.svg)
+![](https://github.com/sfadriaan/Apex-Projects/blob/main/Random-Number-Generator/images/Deviation%20From%20Average%20Per%20Entrant.svg)
 
 The standard deviation for the first test is 4000 ± 83 whereas the second test’s standard deviation is 4000 ± 62. 
 
