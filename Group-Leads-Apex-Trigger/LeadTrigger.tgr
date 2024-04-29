@@ -1,0 +1,23 @@
+/**
+ * @description: Trigger for the Lead object
+ */
+trigger LeadTrigger on Lead (after insert) {
+
+    if (Trigger.isAfter) {
+        if (Trigger.isInsert){
+            Map<Id,Lead> leadRecords = new Map<Id,Lead>();
+            for (Id leadRecordId:Trigger.newMap.keyset()){
+                Lead leadRecord = Trigger.newMap.get(leadRecordId);
+                if (leadRecord.LeadSource == 'Foobar'){
+                    leadRecords.put(leadRecordId,leadRecord);
+                }
+            }
+            if (leadRecords.size() != 0){
+            //Calls the Handler class to group all inserted
+            //Leads to one Campaign
+            LeadTriggerHandler.groupLeadsToCampaign(leadRecords);  
+            }    
+        }
+    }
+    
+}
